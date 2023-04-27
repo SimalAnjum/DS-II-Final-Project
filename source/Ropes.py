@@ -177,6 +177,8 @@ class Rope:
 
 
 
+
+
 # Create a rope
 input_string = 'hello_iam_a_rope_data_structure'
 rope = Rope(input_string, minLeafChars=2, maxLeafChars=6)
