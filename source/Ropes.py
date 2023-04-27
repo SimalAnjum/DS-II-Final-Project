@@ -1,3 +1,4 @@
+
 # Set the maximum and minimum number of characters in a leaf node of the rope
 maxLeafChars = 5
 minLeafChars = 1
@@ -177,7 +178,8 @@ class Rope:
 
 
 # Create a rope
-rope = Rope('hello_iam_a_rope_data_structure', minLeafChars=2, maxLeafChars=6)
+input_string = 'hello_iam_a_rope_data_structure'
+rope = Rope(input_string, minLeafChars=2, maxLeafChars=6)
 
 # Test __repr__()
 print("Printing the rope:")
@@ -190,7 +192,7 @@ print("Size of Rope: ", rope.root.size, "\n")
 print("Printing the Search Result:")
 word = "data"
 index = rope.search(rope.root, word , 0)
-print("The word", word, "is found at index = ",index, "\n") # expected output: 7
+print("The word", word, "is found at index = ",index, "\n")
 
 print("Printing the Replace Result:")
 # Test replace()
@@ -198,11 +200,17 @@ rope.replace(rope.root, "hello_iam_a_", "bro_yah_hai_")
 print(rope, "\n")
 
 # Test insert()
+
 print("Printing the Insert Result:")
 rope.insert(rope.root, '_and_its_working', 41)
-print(rope , "\n") # expected output: (Rope('Hello, bea'), Rope('utiful world!'))
+print(rope , "\n")
+s2 = str(rope)
 
 # Test delete()
 print("Printing the Delete Result:")
-rope.delete(rope.root, 4, 32)
-print(rope, '\n') # expected output: (Rope('H bea'), Rope('utiful world!'))
+start = 4
+end = 32
+
+print("We are deleting from index = ", start, "to the index = ", end, "which is ",s2[10:37] )
+rope.delete(rope.root, start, end)
+print(rope, '\n') 
