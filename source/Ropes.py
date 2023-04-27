@@ -48,6 +48,7 @@ class Rope:
                 node = node.right
         return -1
     
+    
     # Insert a string into the Rope object at a given position
     def insert(self, node, s, i):
         stack = [node]
@@ -134,22 +135,35 @@ class Rope:
         if node.size < self.minLeafChars:
             self.merge(node)
 
-    # Define a method for replacing all occurrences of a given pattern with the given replacement string in the given node's value
-    def replace(self, node, pattern, replace_with):
-        # Replace all occurrences of the pattern with the replacement string in the node's value
-        node.value = node.value.replace(pattern, replace_with)
-        # Update the size of the node's value
-        node.size = len(node.value)
-        # If the size of the node's value is less than the minimum leaf characters allowed, merge the node
-        if node.size < self.minLeafChars:
-            self.merge(node)
+    def split(self, node):
+        # Check if the node has any children. If not, return.
+        if node.left is None and node.right is None:
+            return
+
+        # Split the node's children.
+        left_children = []
+        right_children = []
+        midpoint = len(node.children) // 2
+
+        for i, child in enumerate(node.children):
+            if i < midpoint:
+                left_children.append(child)
+            else:
+                right_children.append(child)
+
+        # Create new left and right nodes using the split children.
+        node.left = Node(left_children)
+        node.right = Node(right_children)
+
+        # Clear the node's children.
+        node.children = None
+
 
     def merge(self, node):
         # Check if the input node has both left and right children.
         # If not, simply return without doing anything.
         if not node.left and not node.right:
             return
-
         # Concatenate the values of the left and right child nodes (using empty strings if either child node does not exist),
         # and assign the result to the input node's "value" attribute.
         node.value = (node.left.value if node.left else "") + (node.right.value if node.right else "")
@@ -163,22 +177,32 @@ class Rope:
 
 
 # Create a rope
-rope = Rope('Hello, world!', minLeafChars=2, maxLeafChars=6)
+rope = Rope('hello_iam_a_rope_data_structure', minLeafChars=2, maxLeafChars=6)
 
 # Test __repr__()
-print(rope) # expected output: (Rope('Hello,'), Rope(' world!'))
+print("Printing the rope:")
+print(rope, "\n") # expected output: (Rope('Hello,'), Rope(' world!'))
+
+#size of rope
+print("Size of Rope: ", rope.root.size, "\n")
 
 # Test search()
-index = rope.search(rope.root, 'world', 0)
-print(index) # expected output: 7
+print("Printing the Search Result:")
+word = "data"
+index = rope.search(rope.root, word , 0)
+print("The word", word, "is found at index = ",index, "\n") # expected output: 7
+
+print("Printing the Replace Result:")
+# Test replace()
+rope.replace(rope.root, "hello_iam_a_", "bro_yah_hai_")
+print(rope, "\n")
 
 # Test insert()
-rope.insert(rope.root, ' beautiful', 7)
-print(rope) # expected output: (Rope('Hello, bea'), Rope('utiful world!'))
+print("Printing the Insert Result:")
+rope.insert(rope.root, '_and_its_working', 41)
+print(rope , "\n") # expected output: (Rope('Hello, bea'), Rope('utiful world!'))
 
 # Test delete()
-rope.delete(rope.root, 0, 6)
-print(rope) # expected output: (Rope('H bea'), Rope('utiful world!'))
-# Test replace()
-rope.replace(rope.root, "beautiful", "Simal")
-print(rope)
+print("Printing the Delete Result:")
+rope.delete(rope.root, 4, 32)
+print(rope, '\n') # expected output: (Rope('H bea'), Rope('utiful world!'))
