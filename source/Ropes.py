@@ -196,13 +196,13 @@ word = "data"
 index = rope.search(rope.root, word , 0)
 print("The word", word, "is found at index = ",index, "\n")
 
-print("Printing the Replace Result:")
+
 # Test replace()
+print("Printing the Replace Result: ")
 rope.replace(rope.root, "hello_iam_a_", "bro_yah_hai_")
 print(rope, "\n")
 
 # Test insert()
-
 print("Printing the Insert Result:")
 rope.insert(rope.root, '_and_its_working', 41)
 print(rope , "\n")
@@ -212,7 +212,6 @@ s2 = str(rope)
 print("Printing the Delete Result:")
 start = 4
 end = 32
-
 print("We are deleting from index = ", start, "to the index = ", end, "which is ",s2[10:37] )
 rope.delete(rope.root, start, end)
 print(rope, '\n') 
