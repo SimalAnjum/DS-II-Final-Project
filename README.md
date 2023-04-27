@@ -7,9 +7,15 @@ In this introduction, we will explore the basic principles and properties of rop
 In this project we have implemented the following functions:
 
 init(rope): Initializes a new Rope object with a string s
+
 merge(left, right): Concatenates two Rope instances left and right into a new Rope instance.
+
 Search(indexing): returns the character at ith position, we search recursively beginning at the root node.
+
 Split(self, i): Splits the Rope at the specified index i.
+
 Insert(rope, x): takes a Rope instance rope, a string s, and an index i, and inserts the string s into the Rope at the specified index i.
+
 Delete(rope): This delete function takes a Rope instance rope, a start index start, and an end index end, and removes the characters from the Rope between the start and end indices. 
+
 Replace: replaces a given string with text in the rope
