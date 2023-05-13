@@ -23,3 +23,5 @@ Insert(rope, x): takes a Rope instance rope, a string s, and an index i, and ins
 Delete(rope): This delete function takes a Rope instance rope, a start index start, and an end index end, and removes the characters from the Rope between the start and end indices. 
 
 Replace: replaces a given string with text in the rope
+
+Group Members: Dua e Sameen, Muhammad Talha Salani, Simal Anjum
